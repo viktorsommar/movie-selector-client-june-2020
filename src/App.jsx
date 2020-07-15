@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Movie from "./component/movie/movie_component";
 
-const App = () => {
+
+class App extends Component {
+  render() {
     return (
-        <div>
-
-        </div>
+      <div>
+        <Movie/>
+      </div>
     )
+  }
 }
+
 export default App;
