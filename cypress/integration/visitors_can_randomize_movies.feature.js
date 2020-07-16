@@ -30,7 +30,5 @@ describe("Visitors can randomize movies", () => {
       cy.get('#movie-release-date').should("contain", "1999-05-15")
       cy.get('#movie-rating').should("contain", "1393 has rated this movie. It has an average ratings of 7.5")
     })
-
   })
-
 })

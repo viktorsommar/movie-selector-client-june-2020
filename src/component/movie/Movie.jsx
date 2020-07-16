@@ -6,16 +6,10 @@ class Movie extends Component {
     randomMovie: null
   };
 
-
-
-
   getRandomMovie = async () => {
     let response = await axios.get(`/movies/random`);
     this.setState({ randomMovie: response.data.movie });
   }
-
-
-
   render() {
     let randomMovie;
     this.state.randomMovie && (
