@@ -18,7 +18,7 @@ class Movie extends Component {
           <h2 id="movie-title">{this.state.randomMovie.title}</h2>
           <p id="movie-overview">{this.state.randomMovie.overview}</p>
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
-          <p id="movie-rating">{this.state.randomMovie.vote_count} has rated this movie. It has an average ratings of {this.state.randomMovie.vote_average}</p>
+          <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
         </div>
       )
     )
