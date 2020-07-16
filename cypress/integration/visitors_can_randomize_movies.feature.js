@@ -4,12 +4,12 @@ describe("Visitors can randomize movies", () => {
     cy.route({
       method: "GET",
       url: 'http://localhost:3000/api/v1/movies/random',
-      response: "fixtures:random_movie.json",
+      response: "fixture:random_movie.json"
     });
     cy.visit("/");
   });
 
-  it("visitor can get a random movie", () => {
+  it("visitor can get a random movies", () => {
     cy.get("button").should("contain", "Randomize Movie").click();
     cy.get('#random-movie').within(() => {
       cy.get('#movie-title').should("contain", "Star Wars")
@@ -17,6 +17,20 @@ describe("Visitors can randomize movies", () => {
       cy.get('#movie-release-date').should("contain", "1977-05-25")
       cy.get('#movie-rating').should("contain", "13937 has rated this movie. It has an average ratings of 8.2")
     })
-  }) 
+    cy.route({
+      method: "GET",
+      url: 'http://localhost:3000/api/v1/movies/random',
+      response: "fixture:another_random_movie.json"
+    });
+    cy.wait(1000)
+    cy.get("button").should("contain", "Randomize Movie").click();
+    cy.get('#random-movie').within(() => {
+      cy.get('#movie-title').should("contain", "Batman")
+      cy.get('#movie-overview').should("contain", "Batman bits up poor people.")
+      cy.get('#movie-release-date').should("contain", "1999-05-15")
+      cy.get('#movie-rating').should("contain", "1393 has rated this movie. It has an average ratings of 7.5")
+    })
+
+  })
 
 })
