@@ -1,0 +1,24 @@
+{
+  "movie":
+  {
+    "popularity": 70.678,
+    "vote_count": 13937,
+    "video": false,
+    "poster_path": "\/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+    "id": 11,
+    "adult": false,
+    "backdrop_path": "\/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+    "original_language": "en",
+    "original_title": "Star Wars",
+    "genre_ids": [
+      28,
+      12,
+      878
+    ],
+    "title": "Star Wars",
+    "vote_average": 8.2,
+    "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+    "release_date": "1977-05-25"
+  }
+}
+  
