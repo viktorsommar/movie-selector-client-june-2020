@@ -46,5 +46,13 @@ describe("subscriber can add movie to their watchlist", () => {
           "The movie has been added to your watchlist"
         );
       });
+      cy.get("button").contains("View watchlist").click()
+      cy.get("#watchlist-details").within(() => {
+        cy.get("li")
+        .should("have.length", 1)
+        .first().should("have.text", "Star Wars")
+      })
+      cy.get("button").contains("View watchlist").click()
+      cy.get("watchlist-details").should("not.exist")
     });
 });
