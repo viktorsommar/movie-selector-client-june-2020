@@ -4,11 +4,12 @@ import axios from "axios";
 class Movie extends Component {
   state = {
     randomMovie: null,
-    watchListMessage: {}
+    watchlistMessage: {},
+    watchlist: {}
   };
 
   addToWatchlist = async (event) => {
-    let movieId = event.target.parentElement.dataSet.id
+    let movieId = event.target.parentElement.dataset.id
     let credentials = await JSON.parse(sessionStorage.getItem("credentials"))
     let headers = {
       ...credentials,
@@ -60,7 +61,7 @@ class Movie extends Component {
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
           <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button> 
-          <p id="watchlist-message">the movie has been added to your watchlist</p>   
+          <p id="watchlist-message">{this.state.watchlistMessage.message}</p>   
         </div>
       )
     )

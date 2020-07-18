@@ -10,7 +10,7 @@ describe("subscriber can add movie to their watchlist", () => {
     cy.visit("/");
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/v1/auth",
+      url: "http://localhost:3000/api/v1/auth/sign_in",
       response: "fixture:login_response.json",
       headers: {
         uid: "user@mail.com",
@@ -43,7 +43,7 @@ describe("subscriber can add movie to their watchlist", () => {
         cy.get("#watchlist-button").contains("Add to Watchlist").click();
         cy.get("#watchlist-message").should(
           "contain",
-          "the movie has been added to your watchlist"
+          "The movie has been added to your watchlist"
         );
       });
     });
