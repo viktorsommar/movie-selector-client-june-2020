@@ -5,7 +5,7 @@ class Movie extends Component {
   state = {
     randomMovie: null,
     watchlistMessage: {},
-    watchlist: {}
+    watchlistDetails: {}
   };
 
   addToWatchlist = async (event) => {
@@ -17,9 +17,9 @@ class Movie extends Component {
       Accept: "application/json"
     }
     let response 
-    if (this.state.watchlist.hasOwnProperty("id")) {
+    if (this.state.watchlistDetails.hasOwnProperty("id")) {
     response = await axios.put(
-      `/watchlist/${this.state.watchlist.id}`,
+      `/watchlist/${this.state.watchlistDetails.id}`,
       {
         movie_id: movieId,
       },
@@ -43,7 +43,7 @@ class Movie extends Component {
         message: response.data.message,
         id: movieId,
       },
-      watchlist: response.data.watchlist
+      watchlistDetails: response.data.watchlist
     })
   }
 
@@ -53,35 +53,50 @@ class Movie extends Component {
   }
   render() {
     let randomMovie;
+    let watchlistDetailsDisplay
     this.state.randomMovie && (
       randomMovie = (
-      
         <div id="random-movie">
           <h2 id="movie-title">{this.state.randomMovie.title}</h2>
           <p id="movie-overview">{this.state.randomMovie.overview}</p>
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
           
-          
          {this.props.authenticated && (
           <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button>
-          
-
           )} 
           <p id="watchlist-message">{this.state.watchlistMessage.message}</p> 
-
-          
         </div>
-        
       )
     )
+
+    if (this.state.watchlistDetails.hasOwnProperty("movies")) {
+      watchlistDetailsDisplay = this.state.watchlistDetails.movies.map((movie) => {
+        return <li key={movie.title}>{`${movie.title}`}</li>;
+      });
+    } else {
+      watchlistDetailsDisplay = "You have no movies in your watchlist";
+    }
+
     return (
       <>
       <div>
         <button onClick={this.getRandomMovie} >Randomize Movie</button>
         {randomMovie}
       </div>
-      <button>View watchlist</button>
+
+      {this.state.watchlistDetails.hasOwnProperty("movies") && (
+      <button
+        onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist})}
+        >
+          View watchlist
+        </button>
+      )}
+      {this.state.showWatchlist &&
+      <>
+      <ul id="watchlist-details">{watchlistDetailsDisplay}</ul>
+      </>
+      }
       </>
     );
   }
