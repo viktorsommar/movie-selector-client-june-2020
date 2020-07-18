@@ -55,21 +55,34 @@ class Movie extends Component {
     let randomMovie;
     this.state.randomMovie && (
       randomMovie = (
+      
         <div id="random-movie">
           <h2 id="movie-title">{this.state.randomMovie.title}</h2>
           <p id="movie-overview">{this.state.randomMovie.overview}</p>
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
-          <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button> 
-          <p id="watchlist-message">{this.state.watchlistMessage.message}</p>   
+          
+          
+         {this.props.authenticated && (
+          <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button>
+          
+
+          )} 
+          <p id="watchlist-message">{this.state.watchlistMessage.message}</p> 
+
+          
         </div>
+        
       )
     )
     return (
+      <>
       <div>
         <button onClick={this.getRandomMovie} >Randomize Movie</button>
         {randomMovie}
       </div>
+      <button>View watchlist</button>
+      </>
     );
   }
 }

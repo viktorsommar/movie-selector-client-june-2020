@@ -28,7 +28,10 @@ class App extends Component {
         {login}
       </div>
       <div>
-        <Movie/>
+        <Movie 
+        authenticated={this.state.authenticated}
+        
+        />
       </div>
       </>
     )
