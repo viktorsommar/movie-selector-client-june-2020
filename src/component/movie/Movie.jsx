@@ -19,7 +19,7 @@ class Movie extends Component {
     let response 
     if (this.state.watchlistDetails.hasOwnProperty("id")) {
     response = await axios.put(
-      `/watchlist/${this.state.watchlistDetails.id}`,
+      `/watchlist_items/${this.state.watchlistDetails.id}`,
       {
         movie_id: movieId,
       },
@@ -29,7 +29,7 @@ class Movie extends Component {
     );
     } else {
       response = await axios.post(
-        `/watchlist`,
+        `/watchlist_items`,
         {
           movie_id: movieId,
         },
