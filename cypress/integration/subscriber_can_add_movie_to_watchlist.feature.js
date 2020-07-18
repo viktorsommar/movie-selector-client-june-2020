@@ -40,8 +40,8 @@ describe("subscriber can add movie to their watchlist", () => {
     it("subscriber can add movie to the watchlist ", () => {
       cy.get("button").contains("Randomize Movie").click()
       cy.get("#random-movie").within(() => {
-        cy.get("button").contains("Add to Watchlist").click();
-        cy.get("#message").should(
+        cy.get("#watchlist-button").contains("Add to Watchlist").click();
+        cy.get("#watchlist-message").should(
           "contain",
           "the movie has been added to your watchlist"
         );

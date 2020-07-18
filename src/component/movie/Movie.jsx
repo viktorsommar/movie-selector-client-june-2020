@@ -3,7 +3,8 @@ import axios from "axios";
 
 class Movie extends Component {
   state = {
-    randomMovie: null
+    randomMovie: null,
+    watchListMessage: {}
   };
 
   addToWatchlist = async (event) => {
@@ -59,7 +60,7 @@ class Movie extends Component {
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
           <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button> 
-          <p id="watchlist-message">{this.state.watchlistMessage.message}</p>   
+          <p id="watchlist-message">the movie has been added to your watchlist</p>   
         </div>
       )
     )
