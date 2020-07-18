@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { storeAuthCredentials } from "../modules/auth";
 import AuthForm from "./AuthForm";
-import { Button } from 'semantic-ui-react'
+import { Segment, Menu, Button } from 'semantic-ui-react'
  
 class Auth extends Component {
     state = {
@@ -28,13 +28,27 @@ class Auth extends Component {
     render() {
         let button
         let form
-
+       
         this.state.renderForm ? (
             form = <AuthForm authenticate={this.authenticate} />
-        ) : (
-            button = <Button id="login" onClick={() => this.setState({ renderForm: true })}>Login</Button>
-        )
+        ) : (    
+            button =
+            <Segment inverted>
+              <Menu inverted pointing secondary>
+                <Menu.Menu position='right'>
+                  
+                  <Menu.Item as='h3'>
+                    <Button inverted id="login" onClick={() => this.setState({ renderForm: true })}>
+                    Log-in 
+                    </Button>
+                  </Menu.Item>
+                </Menu.Menu>
+              </Menu>
+            </Segment>
 
+           
+        )
+       
         return (
             <div>
                 {button}
