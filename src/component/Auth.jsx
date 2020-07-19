@@ -31,22 +31,22 @@ class Auth extends Component {
     this.state.renderForm
       ? (form = <AuthForm authenticate={this.authenticate} />)
       : (button = (
-          <Segment inverted>
-            <Menu inverted pointing secondary>
-              <Menu.Menu position="right">
-                <Menu.Item as="h4">
-                  <Button
-                    inverted
-                    id="login"
-                    onClick={() => this.setState({ renderForm: true })}
-                  >
-                    Log-in
+        <Segment inverted>
+          <Menu inverted pointing secondary>
+            <Menu.Menu position="right">
+              <Menu.Item as="h4">
+                <Button
+                  inverted
+                  id="login"
+                  onClick={() => this.setState({ renderForm: true })}
+                >
+                  Log-in
                   </Button>
-                </Menu.Item>
-              </Menu.Menu>
-            </Menu>
-          </Segment>
-        ));
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
+        </Segment>
+      ));
 
     return (
       <div>
