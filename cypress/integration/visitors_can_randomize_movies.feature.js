@@ -10,7 +10,7 @@ describe("Visitors can randomize movies", () => {
   });
 
   it("visitor can get a random movies", () => {
-    cy.get("button").should("contain", "Randomize Movie").click();
+    cy.get("button").contains("Randomize Movie").click();
     cy.get('#random-movie').within(() => {
       cy.get('#movie-title').should("contain", "Star Wars")
       cy.get('#movie-overview').should("contain", "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.")
@@ -23,7 +23,7 @@ describe("Visitors can randomize movies", () => {
       response: "fixture:another_random_movie.json"
     });
     cy.wait(1000)
-    cy.get("button").should("contain", "Randomize Movie").click();
+    cy.get("button").contains("Randomize Movie").click();
     cy.get('#random-movie').within(() => {
       cy.get('#movie-title').should("contain", "Batman")
       cy.get('#movie-overview').should("contain", "Batman bits up poor people.")
