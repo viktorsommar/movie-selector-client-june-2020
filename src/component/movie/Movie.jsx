@@ -9,8 +9,7 @@ class Movie extends Component {
     watchlistDetails: {}
   };
 
-  addToWatchlist = async (event) => {
-    let movieId = event.target.parentElement.dataset.id
+  addToWatchlist = async (movie) => {
     let credentials = await JSON.parse(sessionStorage.getItem("credentials"))
     let headers = {
       ...credentials,
@@ -20,9 +19,9 @@ class Movie extends Component {
     let response
     if (this.state.watchlistDetails.hasOwnProperty("id")) {
       response = await axios.put(
-        `/watchlist/${this.state.watchlistDetails.id}`,
+        `/watchlist_items/${this.state.watchlistDetails.id}`,
         {
-          movie_id: movieId,
+          movie_db_id: this.state.randomMovie.id,
         },
         {
           headers: headers,
@@ -30,9 +29,9 @@ class Movie extends Component {
       );
     } else {
       response = await axios.post(
-        `/watchlist`,
+        `/watchlist_items`,
         {
-          movie_id: movieId,
+          movie_db_id: this.state.randomMovie.id,
         },
         {
           headers: headers,
@@ -42,7 +41,7 @@ class Movie extends Component {
     this.setState({
       watchlistMessage: {
         message: response.data.message,
-        id: movieId,
+        id: movie.id,
       },
       watchlistDetails: response.data.watchlist
     })

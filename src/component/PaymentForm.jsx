@@ -9,7 +9,8 @@ class PaymentForm extends Component {
     message: null
   }
 
-  payWithStripe = async () => {
+  payWithStripe = async (event) => {
+    event.preventDefault()
     let stripeResponse = await this.props.stripe.createToken()
     
     stripeResponse.token && (
@@ -25,7 +26,7 @@ class PaymentForm extends Component {
       headers: headers 
     })
 
-    if (response.data.paid == true) {
+    if (response.data.paid === true) {
       this.setState({message: response.data.message})
     }
   }
@@ -51,7 +52,7 @@ class PaymentForm extends Component {
     let message 
 
     this.state.message && (
-      message = <p id="payment-message">this.state.message</p>
+      message = <p id="payment-message">{this.state.message}</p>
     )
 
     return (
