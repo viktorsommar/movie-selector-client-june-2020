@@ -25,7 +25,7 @@ describe('User can become subscriber successfully', () => {
     });
   })
 
-  describe('successfully', () => {
+  it('successfully', () => {
     cy.get("#become-subscriber").click()
     cy.get("#payment-form").should("exist")
   })
