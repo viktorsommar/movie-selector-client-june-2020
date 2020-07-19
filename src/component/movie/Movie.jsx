@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button } from 'semantic-ui-react'
+import { Button, Segment } from 'semantic-ui-react'
 
 class Movie extends Component {
   state = {
@@ -64,7 +64,9 @@ class Movie extends Component {
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
           
          {this.props.authenticated && (
+         
           <Button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</Button>
+          
           )} 
           <p id="watchlist-message">{this.state.watchlistMessage.message}</p> 
         </div>
@@ -82,8 +84,10 @@ class Movie extends Component {
     return (
       <>
       <div>
+        <Segment style={{ marginLeft: '10em', marginRight: '25em', marginTop:'5em' }}>
         <Button onClick={this.getRandomMovie} >Randomize Movie</Button>
         {randomMovie}
+        </Segment>
       </div>
 
       {this.state.watchlistDetails.hasOwnProperty("movies") && (
