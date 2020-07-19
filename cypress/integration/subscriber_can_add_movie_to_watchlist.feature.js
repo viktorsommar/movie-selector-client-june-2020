@@ -6,7 +6,7 @@ describe("subscriber can add movie to their watchlist", () => {
       url: "http://localhost:3000/api/v1/movies/random",
       response: "fixture:random_movie.json"
     });
-    
+
     cy.visit("/");
     cy.route({
       method: "POST",
@@ -37,23 +37,23 @@ describe("subscriber can add movie to their watchlist", () => {
     });
   });
 
-    it("subscriber can add movie to the watchlist ", () => {
-      cy.get("button").contains("Randomize Movie").click()
-      cy.get("#random-movie").within(() => {
-        cy.get("#watchlist-button").contains("Add to Watchlist").click();
-        cy.get("#watchlist-message").should(
-          "contain",
-          "The movie has been added to your watchlist"
-        );
-      });
-      cy.get("button").contains("View watchlist").click()
-      cy.get("#watchlist-details").within(() => {
-        cy.get("li")
+  it("subscriber can add movie to the watchlist ", () => {
+    cy.get("button").contains("Randomize Movie").click()
+    cy.get("#random-movie").within(() => {
+      cy.get("#watchlist-button").contains("Add to Watchlist").click();
+      cy.get("#watchlist-message").should(
+        "contain",
+        "The movie has been added to your watchlist"
+      );
+    });
+    cy.get("button").contains("View watchlist").click()
+    cy.get("#watchlist-details").within(() => {
+      cy.get("li")
         .should("have.length", 1)
         .first().should("have.text", "Star Wars")
-      })
+    })
 
-      cy.get("button").contains("View watchlist").click()
-      cy.get("watchlist-details").should("not.exist")
-    });
+    cy.get("button").contains("View watchlist").click()
+    cy.get("watchlist-details").should("not.exist")
+  });
 });

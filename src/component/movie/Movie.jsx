@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button, Segment } from 'semantic-ui-react'
 
 class Movie extends Component {
   state = {
@@ -16,17 +17,17 @@ class Movie extends Component {
       "Content-type": "application/json",
       Accept: "application/json"
     }
-    let response 
+    let response
     if (this.state.watchlistDetails.hasOwnProperty("id")) {
-    response = await axios.put(
-      `/watchlist_items/${this.state.watchlistDetails.id}`,
-      {
-        movie_id: movieId,
-      },
-      {
-        headers: headers,
-      }
-    );
+      response = await axios.put(
+        `/watchlist/${this.state.watchlistDetails.id}`,
+        {
+          movie_id: movieId,
+        },
+        {
+          headers: headers,
+        }
+      );
     } else {
       response = await axios.post(
         `/watchlist_items`,
@@ -61,11 +62,13 @@ class Movie extends Component {
           <p id="movie-overview">{this.state.randomMovie.overview}</p>
           <p id="movie-release-date">this movie was released in {this.state.randomMovie.release_date}</p>
           <p id="movie-rating">A total of {this.state.randomMovie.vote_count} persons has rated this movie. It has an average rating of {this.state.randomMovie.vote_average}</p>
-          
-         {this.props.authenticated && (
-          <button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</button>
-          )} 
-          <p id="watchlist-message">{this.state.watchlistMessage.message}</p> 
+
+          {this.props.authenticated && (
+
+            <Button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</Button>
+
+          )}
+          <p id="watchlist-message">{this.state.watchlistMessage.message}</p>
         </div>
       )
     )
@@ -80,23 +83,25 @@ class Movie extends Component {
 
     return (
       <>
-      <div>
-        <button onClick={this.getRandomMovie} >Randomize Movie</button>
-        {randomMovie}
-      </div>
+        <div>
+          <Segment style={{ marginLeft: '10em', marginRight: '25em', marginTop: '5em' }}>
+            <Button onClick={this.getRandomMovie} >Randomize Movie</Button>
+            {randomMovie}
+          </Segment>
+        </div>
 
-      {this.state.watchlistDetails.hasOwnProperty("movies") && (
-      <button
-        onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist})}
-        >
-          View watchlist
-        </button>
-      )}
-      {this.state.showWatchlist &&
-      <>
-      <ul id="watchlist-details">{watchlistDetailsDisplay}</ul>
-      </>
-      }
+        {this.state.watchlistDetails.hasOwnProperty("movies") && (
+          <Button
+            onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist })}
+          >
+            View watchlist
+          </Button>
+        )}
+        {this.state.showWatchlist &&
+          <>
+            <ul id="watchlist-details">{watchlistDetailsDisplay}</ul>
+          </>
+        }
       </>
     );
   }
