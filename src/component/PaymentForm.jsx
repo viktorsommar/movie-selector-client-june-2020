@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement  } from "react-stripe-elements"
 
 class PaymentForm extends Component {
   state = {
@@ -6,8 +7,17 @@ class PaymentForm extends Component {
   }
   render() {
     let form = this.state.renderForm ? (
-      <form>
-        <label>FORM</label>
+      <form id="payment-form">
+        <label>Card number</label>
+        <CardNumberElement/>
+
+        <label>Expiry Date</label>
+        <CardExpiryElement/>
+
+        <label>CVC</label>
+        <CardCVCElement/>
+
+        <button>Submit</button>
       </form>
     ) : (
       <button id="become-subscriber" onClick={() => this.setState ({renderForm: true})}>Become a subscriber</button>
@@ -20,4 +30,4 @@ class PaymentForm extends Component {
     )
   }
 }
-export default PaymentForm
+export default injectStripe(PaymentForm)

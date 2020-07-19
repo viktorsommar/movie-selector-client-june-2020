@@ -28,5 +28,13 @@ describe('User can become subscriber successfully', () => {
   it('successfully', () => {
     cy.get("#become-subscriber").click()
     cy.get("#payment-form").should("exist")
+    cy.wait(1000)
+    cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
+      const $body = $iframe.contents().find("body");
+      cy.wrap($body)
+        .find('input[name="cardnumber"]')
+        .type("4242424242424242", { delay: 50 })
+    })
+
   })
 })

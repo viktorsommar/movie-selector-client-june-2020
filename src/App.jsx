@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Movie from "./component/movie/Movie";
 import Auth from "./component/Auth";
 import PaymentForm from "./component/PaymentForm"
+import { Elements } from "react-stripe-elements"
 
 class App extends Component {
   state = {
@@ -17,7 +18,9 @@ class App extends Component {
             {" "}
             Welcome, {JSON.parse(sessionStorage.getItem("credentials")).uid} !
           </p>
+          <Elements>
           <PaymentForm />
+          </Elements>
           </>
         ))
       : (login = (
