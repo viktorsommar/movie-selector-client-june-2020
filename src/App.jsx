@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Movie from "./component/movie/Movie";
 import Auth from "./component/Auth";
-import { Segment, Menu, Button } from "semantic-ui-react";
+
 
 
 class App extends Component {
