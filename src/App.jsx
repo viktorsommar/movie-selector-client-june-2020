@@ -10,10 +10,14 @@ class App extends Component {
     let login;
     this.state.authenticated
       ? (login = (
+        <>
+      
           <p id="message">
             {" "}
             Welcome, {JSON.parse(sessionStorage.getItem("credentials")).uid} !
           </p>
+          <PaymentForm
+          </>
         ))
       : (login = (
           <Auth
