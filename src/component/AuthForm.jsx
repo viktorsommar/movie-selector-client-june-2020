@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Segment, Menu, Grid, Checkbox } from "semantic-ui-react";
+import { Button, Form, Segment, Menu, Checkbox } from "semantic-ui-react";
 
 const AuthForm = (props) => {
   return (
