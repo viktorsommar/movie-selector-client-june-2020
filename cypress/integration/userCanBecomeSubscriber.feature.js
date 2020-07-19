@@ -17,6 +17,15 @@ describe('User can become subscriber successfully', () => {
       },
     });
 
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v1/subscriptions",
+      response: {
+        paid: true,
+        message: "Successful payment, you are now a subscriber"
+      }
+    })
+
     cy.get("#login").click();
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
@@ -35,6 +44,24 @@ describe('User can become subscriber successfully', () => {
         .find('input[name="cardnumber"]')
         .type("4242424242424242", { delay: 50 })
     })
+
+    cy.get('iframe[name^="__privateStripeFrame6"]').then(($iframe) => {
+      const $body = $iframe.contents().find("body");
+      cy.wrap($body)
+        .find('input[name="exp-date"]')
+        .type("1222", { delay: 10 });
+    });
+
+    cy.get('iframe[name^="__privateStripeFrame7"]').then(($iframe) => {
+      const $body = $iframe.contents().find("body");
+      cy.wrap($body)
+        .find('input[name="cvc"]')
+        .type("999", { delay: 10 });
+    });
+  
+    cy.get("#submit-payment").click()
+
+    cy.get("#payment-message").should("contain", "Successful payment, you are now a subscriber")
 
   })
 })
