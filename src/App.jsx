@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from "./component/movie/Movie";
-import Auth from "./component/Auth"
+import Auth from "./component/Auth";
+import { Segment, Menu, Button } from "semantic-ui-react";
 
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
   }
 
   render() {
+    
     let login
     this.state.authenticated ? (
       login = (
@@ -18,10 +20,10 @@ class App extends Component {
       login = (
         <Auth
           setAuthenticated={() => this.setState({authenticated: true})}
-        />
+        />        
       )
     )
-
+  
     return (
       <>
       <div>
