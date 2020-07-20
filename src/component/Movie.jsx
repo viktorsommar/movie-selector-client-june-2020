@@ -30,7 +30,6 @@ class Movie extends Component {
       }
     )
     
-    debugger;
     this.setState({
       watchlistMessage: {
         message: response.data.message,
