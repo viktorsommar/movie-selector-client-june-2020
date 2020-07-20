@@ -6,45 +6,37 @@ class Movie extends Component {
   state = {
     randomMovie: null,
     watchlistMessage: {},
-    watchlistDetails: {}
+    watchlist: [],
+    showWatchlist: false
   };
 
-  addToWatchlist = async (event) => {
-    let movieId = event.target.parentElement.dataset.id
+  addToWatchlist = async (film) => {
+    let movie = film
     let credentials = await JSON.parse(sessionStorage.getItem("credentials"))
     let headers = {
       ...credentials,
       "Content-type": "application/json",
       Accept: "application/json"
     }
-    let response
-    if (this.state.watchlistDetails.hasOwnProperty("id")) {
-      response = await axios.put(
-        `/watchlist/${this.state.watchlistDetails.id}`,
-        {
-          movie_id: movieId,
-        },
-        {
-          headers: headers,
-        }
-      );
-    } else {
-      response = await axios.post(
-        `/watchlist`,
-        {
-          movie_id: movieId,
-        },
-        {
-          headers: headers,
-        }
-      )
-    }
+
+    let response = await axios.post(
+      `/watchlist_items`,
+      {
+        movie_db_id: movie.id,
+        title: movie.title
+      },
+      {
+        headers: headers,
+      }
+    )
+    
+    debugger;
     this.setState({
       watchlistMessage: {
         message: response.data.message,
-        id: movieId,
+        id: movie.id,
       },
-      watchlistDetails: response.data.watchlist
+      watchlist: response.data.watchlist.watchlist_items
     })
   }
 
@@ -52,6 +44,7 @@ class Movie extends Component {
     let response = await axios.get(`/movies/random`);
     this.setState({ randomMovie: response.data.movie });
   }
+
   render() {
     let randomMovie;
     let watchlistDetailsDisplay
@@ -65,7 +58,7 @@ class Movie extends Component {
 
           {this.props.authenticated && (
 
-            <Button id="watchlist-button" onClick={this.addToWatchlist}>Add to Watchlist</Button>
+            <Button id="watchlist-button" onClick={() => this.addToWatchlist(this.state.randomMovie)}>Add to Watchlist</Button>
 
           )}
           <p id="watchlist-message">{this.state.watchlistMessage.message}</p>
@@ -73,8 +66,8 @@ class Movie extends Component {
       )
     )
 
-    if (this.state.watchlistDetails.hasOwnProperty("movies")) {
-      watchlistDetailsDisplay = this.state.watchlistDetails.movies.map((movie) => {
+    if (this.state.watchlist.length != 0 ) {
+      watchlistDetailsDisplay = this.state.watchlist.map((movie) => {
         return <li key={movie.title}>{`${movie.title}`}</li>;
       });
     } else {
@@ -90,7 +83,7 @@ class Movie extends Component {
           </Segment>
         </div>
 
-        {this.state.watchlistDetails.hasOwnProperty("movies") && (
+        {this.props.authenticated && (
           <Button
             onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist })}
           >
