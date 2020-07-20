@@ -18,19 +18,19 @@ class Movie extends Component {
       "Content-type": "application/json",
       Accept: "application/json"
     }
-    
-    let response = await axios.post(
-        `/watchlist_items`,
-        {
-          movie_db_id: movie.id,
-          title: movie.title
-        },
-        {
-          headers: headers,
-        }
-      )
-    
 
+    let response = await axios.post(
+      `/watchlist_items`,
+      {
+        movie_db_id: movie.id,
+        title: movie.title
+      },
+      {
+        headers: headers,
+      }
+    )
+    
+    debugger;
     this.setState({
       watchlistMessage: {
         message: response.data.message,
@@ -66,7 +66,7 @@ class Movie extends Component {
       )
     )
 
-    if (this.state.watchlist.length != 0) {
+    if (this.state.watchlist.length != 0 ) {
       watchlistDetailsDisplay = this.state.watchlist.map((movie) => {
         return <li key={movie.title}>{`${movie.title}`}</li>;
       });
