@@ -1,4 +1,4 @@
-{
+[{
     "message": "The movie has been added to your watchlist", 
     "watchlist": {
         "id": 1,
@@ -9,4 +9,4 @@
             }
         ]
     }
-}
+}]
