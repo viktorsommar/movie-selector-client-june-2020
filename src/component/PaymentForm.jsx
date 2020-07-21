@@ -33,21 +33,22 @@ class PaymentForm extends Component {
   }
   
   render() {
+   
     let form = this.state.renderForm ? (
-      <Segment inverted floated="right">
+    <Segment inverted floated="right">
     <Menu inverted pointing secondary>
       <Menu.Menu position="right">
-      <Form inverted onSubmit={this.payWithStripe} id="payment-form">
+      <Form inverted  style={{ marginTop:'4em'}}onSubmit={this.payWithStripe} id="payment-form">
       <Form.Field>
-        <label>Card number</label>
+        <label id='label'>Card number</label>
         <CardNumberElement />
         </Form.Field>
         <Form.Field>
-        <label>Expiry Date</label>
+        <label id='label'>Expiry Date</label>
         <CardExpiryElement />
         </Form.Field>
         <Form.Field>
-        <label>CVC</label>
+        <label id='label'>CVC</label>
         <CardCVCElement />
         </Form.Field>
         <Form.Field>
