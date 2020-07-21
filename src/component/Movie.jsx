@@ -81,7 +81,7 @@ class Movie extends Component {
       
         <div>
        
-          <Segment style={{ marginLeft: '5em', marginRight: '25em', marginTop: '2em' }}>
+          <Segment style={{ marginLeft: '5em', marginRight: '28em', marginTop: '2em' }}>
             <Message floating color="teal" size='large'
              header='What Should I Watch?'
              content='If you are wondering what movie you could watch and enjoy your free time, use Movie Selector randomizer below.'
@@ -94,12 +94,12 @@ class Movie extends Component {
            
         </div>
         <div>
-        <Segment inverted floated="right">
+        <Segment inverted compact>
         <Menu inverted pointing secondary>
           <Menu.Menu position="right">
         {this.props.authenticated && (
        
-          <Button color='black'
+          <Button inverted
             onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist })}
           >
             View watchlist

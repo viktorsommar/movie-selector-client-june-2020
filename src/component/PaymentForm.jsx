@@ -15,11 +15,12 @@ class PaymentForm extends Component {
     let stripeResponse = await this.props.stripe.createToken()
     
     stripeResponse.token && (
-      this.performPayment(stripeResponse.token)
+      this.performPayment(stripeResponse.token.id)
     )
   }
 
   performPayment = async (stripeToken) => {
+    
     let headers = await getAuthHeaders()
     let response = await axios.post("/subscriptions", {
       stripeToken: stripeToken
@@ -33,21 +34,22 @@ class PaymentForm extends Component {
   }
   
   render() {
+   
     let form = this.state.renderForm ? (
-      <Segment inverted floated="right">
+    <Segment floated="right" compact>
     <Menu inverted pointing secondary>
       <Menu.Menu position="right">
-      <Form inverted onSubmit={this.payWithStripe} id="payment-form">
+      <Form inverted  style={{ marginTop:'4em'}}onSubmit={this.payWithStripe} id="payment-form">
       <Form.Field>
-        <label>Card number</label>
+        <label id='label'>Card number</label>
         <CardNumberElement />
         </Form.Field>
         <Form.Field>
-        <label>Expiry Date</label>
+        <label id='label'>Expiry Date</label>
         <CardExpiryElement />
         </Form.Field>
         <Form.Field>
-        <label>CVC</label>
+        <label id='label'>CVC</label>
         <CardCVCElement />
         </Form.Field>
         <Form.Field>
@@ -60,12 +62,22 @@ class PaymentForm extends Component {
         </Menu>
       </Segment>
     ) : (
-      <Button color='black'
+      <Segment inverted>
+        <Menu inverted pointing secondary>
+        
+          <Menu.Menu position="right">
+            <Menu.Item as="h4">
+            <Button inverted='black'
         id="become-subscriber"
         onClick={() => this.setState({ renderForm: true })}
       >
         Become a subscriber
       </Button>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+      </Segment>
+     
     );
 
     let message 

@@ -9,13 +9,18 @@ class App extends Component {
   state = {
     authenticated: false,
   };
+  
+  setAuthenticated = (subscriber) => {
+    this.setState({ authenticated: true, subscriber: subscriber})
+  }
+
   render() {
     let login;
     this.state.authenticated
       ? (login = (
         <Segment inverted>
         <Menu inverted pointing secondary>
-        <Menu.Item as="h1">MovieSeletor</Menu.Item>
+        <Menu.Item as="h1">MovieSelector</Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item as="h4">
             <Message color='black' as="h3" id="message">
@@ -26,7 +31,8 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
         <Elements>
-          <PaymentForm />
+          <PaymentForm 
+            userIsSubscriber={() => this.setState({ subscriber: true})}/>
         </Elements>
       </Segment>
          
@@ -39,7 +45,7 @@ class App extends Component {
 
     return (
       <>
-      
+    
         <div>{login}</div>
         <div>
           <Movie authenticated={this.state.authenticated} />
