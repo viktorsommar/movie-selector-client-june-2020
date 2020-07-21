@@ -30,10 +30,7 @@ class Movie extends Component {
       }
     )
     
-<<<<<<< HEAD:src/component/Movie.jsx
-    debugger;
-=======
->>>>>>> bcc20c2eaa424b7bf45276169d61a0092e13a7a6:src/component/movie/Movie.jsx
+
     this.setState({
       watchlistMessage: {
         message: response.data.message,
