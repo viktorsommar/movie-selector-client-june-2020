@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Movie from "./component/Movie";
 import Auth from "./component/Auth";
+import { Message, Segment, Menu } from 'semantic-ui-react'
 import PaymentForm from "./component/PaymentForm"
 import { Elements } from "react-stripe-elements"
 
@@ -12,18 +13,25 @@ class App extends Component {
     let login;
     this.state.authenticated
       ? (login = (
-        <>
-      
-          <p id="message">
+        <Segment inverted>
+        <Menu inverted pointing secondary>
+        <Menu.Item as="h1">MovieSeletor</Menu.Item>
+          <Menu.Menu position="right">
+            <Menu.Item as="h4">
+            <Message color='black' as="h3" id="message">
             {" "}
             Welcome, {JSON.parse(sessionStorage.getItem("credentials")).uid} !
-          </p>
-          <Elements>
+          </Message>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+        <Elements>
           <PaymentForm />
-          </Elements>
-          </>
-        ))
-      : (login = (
+        </Elements>
+      </Segment>
+         
+      )
+    )  : (login = (
           <Auth
             setAuthenticated={() => this.setState({ authenticated: true })}
           />
@@ -31,6 +39,7 @@ class App extends Component {
 
     return (
       <>
+      
         <div>{login}</div>
         <div>
           <Movie authenticated={this.state.authenticated} />
