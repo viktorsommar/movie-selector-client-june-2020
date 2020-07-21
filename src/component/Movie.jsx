@@ -29,7 +29,6 @@ class Movie extends Component {
         headers: headers,
       }
     )
-    
 
     this.setState({
       watchlistMessage: {

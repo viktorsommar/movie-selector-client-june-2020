@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Movie from "./component/Movie";
 import Auth from "./component/Auth";
 import { Message, Segment, Menu } from 'semantic-ui-react'
+import PaymentForm from "./component/PaymentForm"
+import { Elements } from "react-stripe-elements"
 
 class App extends Component {
   state = {
@@ -23,10 +25,13 @@ class App extends Component {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
+        <Elements>
+          <PaymentForm />
+        </Elements>
       </Segment>
          
-        ))
-      : (login = (
+      )
+    )  : (login = (
           <Auth
             setAuthenticated={() => this.setState({ authenticated: true })}
           />
