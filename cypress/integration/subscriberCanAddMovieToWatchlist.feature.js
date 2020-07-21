@@ -26,14 +26,8 @@ describe("subscriber can add movie to their watchlist", () => {
 
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/v1/watchlist",
+      url: "http://localhost:3000/api/v1/watchlist_items",
       response: "fixture:watchlist_post_response.json",
-    });
-
-    cy.route({
-      method: "PUT",
-      url: "http://localhost:3000/api/v1/watchlist/1",
-      response: "fixture:watchlist_put_response.json",
     });
   });
 

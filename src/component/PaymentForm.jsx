@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from "axios"
 import { injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement  } from "react-stripe-elements"
 import { getAuthHeaders } from "../modules/auth";
+import { Segment, Menu, Form, Button } from "semantic-ui-react"
 
 class PaymentForm extends Component {
   state = {
@@ -33,21 +34,39 @@ class PaymentForm extends Component {
   
   render() {
     let form = this.state.renderForm ? (
-      <form onSubmit={this.payWithStripe} id="payment-form">
+      <Segment inverted floated="right">
+    <Menu inverted pointing secondary>
+      <Menu.Menu position="right">
+      <Form inverted onSubmit={this.payWithStripe} id="payment-form">
+      <Form.Field>
         <label>Card number</label>
-        <CardNumberElement/>
-
+        <CardNumberElement />
+        </Form.Field>
+        <Form.Field>
         <label>Expiry Date</label>
-        <CardExpiryElement/>
-
+        <CardExpiryElement />
+        </Form.Field>
+        <Form.Field>
         <label>CVC</label>
-        <CardCVCElement/>
-
-        <button id="submit-payment" type="submit">Submit</button>
-      </form>
+        <CardCVCElement />
+        </Form.Field>
+        <Form.Field>
+        <Button color='black' id="submit-payment" type="submit">
+          Submit
+        </Button>
+        </Form.Field>
+      </Form>
+      </Menu.Menu>
+        </Menu>
+      </Segment>
     ) : (
-      <button id="become-subscriber" onClick={() => this.setState ({renderForm: true})}>Become a subscriber</button>
-    )
+      <Button color='black'
+        id="become-subscriber"
+        onClick={() => this.setState({ renderForm: true })}
+      >
+        Become a subscriber
+      </Button>
+    );
 
     let message 
 
