@@ -1,4 +1,4 @@
 {
-  "baseUrl": "http://localhost:3001",
+  "baseUrl": "https://movie-selector-api.herokuapp.com/",
   "chromeWebSecurity": false
 }

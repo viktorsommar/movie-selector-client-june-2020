@@ -36,7 +36,7 @@ class PaymentForm extends Component {
   render() {
    
     let form = this.state.renderForm ? (
-    <Segment inverted floated="right" compact>
+    <Segment floated="right" compact>
     <Menu inverted pointing secondary>
       <Menu.Menu position="right">
       <Form inverted  style={{ marginTop:'4em'}}onSubmit={this.payWithStripe} id="payment-form">
