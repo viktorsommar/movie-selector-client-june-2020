@@ -29,7 +29,7 @@ class Movie extends Component {
         headers: headers,
       }
     )
-    
+
     this.setState({
       watchlistMessage: {
         message: response.data.message,
