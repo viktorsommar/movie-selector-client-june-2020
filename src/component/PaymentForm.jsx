@@ -27,7 +27,7 @@ class PaymentForm extends Component {
       headers: headers 
     })
 
-    if (response.data.paid == true) {
+    if (response.data.paid === true) {
       this.setState({message: response.data.message})
     }
   }
