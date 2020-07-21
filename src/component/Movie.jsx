@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Segment, Message, Header, Menu, Grid, GridColumn } from 'semantic-ui-react'
+import { Button, Segment, Message, Menu, } from 'semantic-ui-react'
 
 class Movie extends Component {
   state = {
