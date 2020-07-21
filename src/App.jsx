@@ -9,6 +9,11 @@ class App extends Component {
   state = {
     authenticated: false,
   };
+  
+  setAuthenticated = (subscriber) => {
+    this.setState({ authenticated: true, subscriber: subscriber})
+  }
+
   render() {
     let login;
     this.state.authenticated
@@ -26,7 +31,8 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
         <Elements>
-          <PaymentForm />
+          <PaymentForm 
+            userIsSubscriber={() => this.setState({ subscriber: true})}/>
         </Elements>
       </Segment>
          
@@ -39,7 +45,7 @@ class App extends Component {
 
     return (
       <>
-      
+    
         <div>{login}</div>
         <div>
           <Movie authenticated={this.state.authenticated} />
