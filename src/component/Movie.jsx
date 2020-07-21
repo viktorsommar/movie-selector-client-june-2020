@@ -68,7 +68,7 @@ class Movie extends Component {
       )
     )
 
-    if (this.state.watchlist.length != 0 ) {
+    if (this.state.watchlist.length !== 0 ) {
       watchlistDetailsDisplay = this.state.watchlist.map((movie) => {
         return <li key={movie.title}>{`${movie.title}`}</li>;
       });
