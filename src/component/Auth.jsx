@@ -14,7 +14,7 @@ class Auth extends Component {
     event.preventDefault();
     try {
       let response 
-      
+
       if (this.state.registration) {
         response = await axios.post("/auth", {
           email: event.target.email.value,

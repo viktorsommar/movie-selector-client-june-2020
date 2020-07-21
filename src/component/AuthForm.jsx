@@ -41,12 +41,12 @@ const AuthForm = (props) => {
                 {
                   props.registration && (
                     <Form.Field>
-                      <label id="label">Password</label>
+                      <label id="label">Password Confirmation</label>
                       <input
-                        name="password"
+                        name="passwordConfirmation"
                         type="password"
-                        id="password"
-                        placeholder="Password"
+                        id="passwordConfirmation"
+                        placeholder="Password Confirmation"
                       />
                     </Form.Field>
                   )

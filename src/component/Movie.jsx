@@ -94,7 +94,7 @@ class Movie extends Component {
            
         </div>
         <div>
-        <Segment inverted >
+        <Segment inverted compact>
         <Menu inverted pointing secondary>
           <Menu.Menu position="right">
         {this.props.authenticated && (
