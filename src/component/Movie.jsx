@@ -60,11 +60,7 @@ class Movie extends Component {
 
           {this.props.authenticated && (
 
-<<<<<<< HEAD:src/component/Movie.jsx
-            <Button id="watchlist-button" onClick={() => this.addToWatchlist(this.state.randomMovie)}>Add to Watchlist</Button>
-=======
             <Button color='black' id="watchlist-button" onClick={() => this.addToWatchlist(this.state.randomMovie)} >Add to Watchlist</Button>
->>>>>>> bcc20c2eaa424b7bf45276169d61a0092e13a7a6:src/component/movie/Movie.jsx
 
           )}
           <p id="watchlist-message">{this.state.watchlistMessage.message}</p>
@@ -98,11 +94,6 @@ class Movie extends Component {
             </Segment>
            
         </div>
-<<<<<<< HEAD:src/component/Movie.jsx
-
-        {this.props.authenticated && (
-          <Button
-=======
         <div>
         <Segment inverted floated="right">
         <Menu inverted pointing secondary>
@@ -110,7 +101,6 @@ class Movie extends Component {
         {this.props.authenticated && (
        
           <Button color='black'
->>>>>>> bcc20c2eaa424b7bf45276169d61a0092e13a7a6:src/component/movie/Movie.jsx
             onClick={() => this.setState({ showWatchlist: !this.state.showWatchlist })}
           >
             View watchlist
