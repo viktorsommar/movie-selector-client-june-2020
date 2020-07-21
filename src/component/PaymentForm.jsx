@@ -60,12 +60,22 @@ class PaymentForm extends Component {
         </Menu>
       </Segment>
     ) : (
-      <Button color='black'
+      <Segment inverted>
+        <Menu inverted pointing secondary>
+        
+          <Menu.Menu position="right">
+            <Menu.Item as="h4">
+            <Button inverted='black'
         id="become-subscriber"
         onClick={() => this.setState({ renderForm: true })}
       >
         Become a subscriber
       </Button>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+      </Segment>
+     
     );
 
     let message 

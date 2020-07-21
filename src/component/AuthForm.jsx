@@ -9,7 +9,7 @@ const AuthForm = (props) => {
     <>
       <Segment inverted>
         <Menu inverted pointing secondary>
-        <Menu.Item as="h1">MovieSeletor</Menu.Item>
+        <Menu.Item as="h1">MovieSelector</Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item as="h4">
               <Button inverted>Log-out</Button>
@@ -60,8 +60,10 @@ const AuthForm = (props) => {
                   Submit
                 </Button>
               </Form.Field>
+              <Form.Field>
+            <Button inverted id="toggle" onClick={props.toggleRegistration}>{toggleRegistrationElement}</Button>
+            </Form.Field>
             </Form>
-            <Button id="toggle" onClick={props.toggleRegistration}>{toggleRegistrationElement}</Button>
           </Menu.Menu>
         </Menu>
       </Segment>

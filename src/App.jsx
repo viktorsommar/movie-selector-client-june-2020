@@ -20,7 +20,7 @@ class App extends Component {
       ? (login = (
         <Segment inverted>
         <Menu inverted pointing secondary>
-        <Menu.Item as="h1">MovieSeletor</Menu.Item>
+        <Menu.Item as="h1">MovieSelector</Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item as="h4">
             <Message color='black' as="h3" id="message">

@@ -49,7 +49,7 @@ class Auth extends Component {
       : (button = (
         <Segment inverted>
           <Menu inverted pointing secondary>
-            <Menu.Item as="h1">MovieSeletor</Menu.Item>
+            <Menu.Item as="h1">MovieSelector</Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item as="h4">
                 <Button
