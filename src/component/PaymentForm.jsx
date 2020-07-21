@@ -13,14 +13,14 @@ class PaymentForm extends Component {
   payWithStripe = async (event) => {
     event.preventDefault()
     let stripeResponse = await this.props.stripe.createToken()
-    debugger
+    
     stripeResponse.token && (
       this.performPayment(stripeResponse.token.id)
     )
   }
 
   performPayment = async (stripeToken) => {
-    debugger
+    
     let headers = await getAuthHeaders()
     let response = await axios.post("/subscriptions", {
       stripeToken: stripeToken
@@ -29,7 +29,7 @@ class PaymentForm extends Component {
     })
 
     if (response.data.paid === true) {
-      this.props.userIsSubscriber()
+      this.setState({message: response.data.message})
     }
   }
   
