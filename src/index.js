@@ -7,7 +7,7 @@ import './index.css'
 import { StripeProvider } from "react-stripe-elements"
 
 let apiUrl
-if (process.env.NODE_ENV == 'production' )  {
+if (process.env.NODE_ENV === 'production' )  {
   apiUrl = 'https://movie-selector-api.herokuapp.com/api/v1'
 } else {
   apiUrl = 'http://localhost:3000/api/v1'
